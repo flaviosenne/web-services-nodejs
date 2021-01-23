@@ -1,12 +1,9 @@
 module.exports = {
-    host: 'smtp.gmail.com',
-    port: 587,
-    security: true,
+    host: 'smtp.mailtrap.io',
+    port: 2525,
+    security: false,
     auth: {
-        user:'joaodev3@gmail.com',
-        pass: 'joaoflavio'
-    },
-    tls:{
-        rejectUnauthorized: false
+        user:'9a75971236d92c',
+        pass: 'a76e0329cbf718'
     }
 }
