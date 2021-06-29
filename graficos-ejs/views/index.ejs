@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+  <div id="myDiv" style="width: 480px; height: 400px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script type="text/javascript">
+  
+  const obj = '<%-JSON.stringify(obj)%>'
+  objJson =JSON.parse(obj)
+  console.log(JSON.parse(obj))
+  var data = [{
+      type: 'bar',
+      y: objJson.value,
+      x: objJson.month
+  }];
+
+Plotly.newPlot('myDiv', data);
+  </script>
+</body>
+</html>
