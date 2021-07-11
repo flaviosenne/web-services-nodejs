@@ -1,0 +1,101 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "title":"API test swagger",
+        "description":"test swagger-ui-express lib",
+        "termsOfService":"http://localhost:4000/terms",
+        "contact": {
+            "email":"joaodev3@gmail.com"
+        },
+        "version":"1.0.0"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:400",
+            "description":"API of test"
+        }
+        
+    ],
+    "paths": {
+        "/msg": {
+            "post":{
+                "sumary": "Cadastro de mensagem",
+                "description":"This resourse will add msg in DB",
+                "tags": ["Message"],
+                "security":[
+                    {"bearerAuth": []}
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema": {
+                                "$ref":"#/components/schemas/Msg"
+                            },
+                            "examples": {
+                                "msg": {
+                                    "value":{
+                                        "msg": "example msg"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "400":{
+                        "description": "Bad Request"
+                    },
+                    "201":{
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "$ref": "#/components/schemas/Msg"
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get":{
+                "description": "list msgs in DB",
+                "tags": ["Message"],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Msg"
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Msg":{
+                "type":"object",
+                "properties":{
+                    "msg":{"type":"string"}
+                }
+            }
+        },
+        "securitySchemas":{
+            "bearerAuth":{
+                "type":"http",
+                "schema":"Bearer",
+                "bearerFormat":"JWT"
+            }
+        }
+    }
+}
