@@ -1,0 +1,9 @@
+1° baixar elasticsearch e kibana
+2° descompactar e colocar do C:
+3° criar variável de ambiente
+4° no cmd dar o comando elasticsearch (isso dentro da pasta bin)
+5° no cmd dar o comando kibana (isso dentro da pasta bin)
+6° no navegador colocar o endereço: http://localhost:9200 para o elasticsearch
+7° no navegador colocar o endereço: http://localhost:5601 para o kibana
+
+-- sucesso
