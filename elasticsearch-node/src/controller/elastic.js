@@ -15,14 +15,18 @@ module.exports = class Elastic {
             for await(let row of data){
               await client.index({
                 index: 'embrapa',
-                type: 'type_embrapa',
+                type: 'soja',
+                id: row.id,
                 body: row  
-              }, (err) => {
-                if(err) return res.status(400).json(err)
+              }, (err, resp) => {
+                if(err) {
+                  return res.status(400).json(err)
+                }else{
+                  return res.json({msg: 'index ok', resp})
+                }
               })
             }
             
-            return res.json({msg: 'index ok'})
         }) 
     }
 
@@ -30,8 +34,13 @@ module.exports = class Elastic {
       const client = getConnection()
 
     const resultElastic = await client.search({
-      index: 'embrapa',
-      size: 1000
+      index: 'soja_question_response',
+      size: 1000,
+      body: {
+        query: {
+          match: { name: 'soja'}
+        }
+      }
     })
     return res.json(resultElastic)    
   }
