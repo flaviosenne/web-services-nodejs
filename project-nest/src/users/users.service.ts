@@ -14,22 +14,28 @@ export class UsersService {
 
   }
   async create(dto: CreateUserDto): Promise<UserModel> {
-    return await this.repository.save(dto)
+    const {name, password, email} = dto
+    
+    return await this.repository.save({ 
+      createdAt: Date.now(),
+      email, name, password
+    })
   }
 
   async findAll(): Promise<UserModel[]> {
     return await this.repository.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number): Promise<UserModel> {
+    return await this.repository.findOne({id})
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, dto: UpdateUserDto): Promise<void> {
+    const {name, email} = dto
+    await this.repository.update(id, {name, email})
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number): Promise<void> {
+    await this.repository.delete({id})
   }
 }
