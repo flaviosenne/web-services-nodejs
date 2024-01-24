@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\joaof\\Desktop\\web-services-nodejs\\logs-implementation\\logs\\.eecf74d1359f269b22c52d32a03db11cae4d9ba4-audit.json",
+    "files": [
+        {
+            "date": 1706124609932,
+            "name": "C:\\Users\\joaof\\Desktop\\web-services-nodejs\\logs-implementation\\logs\\arquivo-de-log-2024-01-24.log",
+            "hash": "a0625de312925af2e91fa13ca515ac5cef4b8c4bd095a486fccc32492ef5f888"
+        }
+    ],
+    "hashType": "sha256"
+}
